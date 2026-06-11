@@ -518,7 +518,7 @@ p {
   padding: 0.9rem 1.25rem;
   overflow: hidden;
   background: var(--cream);
-  color: var(--ink);
+  color: var(--forest);
   border-bottom: 1px solid var(--line-dark);
   font-weight: 800;
 }
@@ -773,7 +773,7 @@ p {
   position: absolute;
   top: 0.8rem;
   bottom: 0.8rem;
-  left: 7.75rem;
+  left: 7.35rem;
   width: 1px;
   background: linear-gradient(180deg, transparent, rgba(215, 184, 145, 0.7), rgba(185, 208, 230, 0.38), transparent);
 }
@@ -796,7 +796,7 @@ p {
   content: "";
   position: absolute;
   top: 1.72rem;
-  left: 7.48rem;
+  left: 7.06rem;
   width: 0.58rem;
   height: 0.58rem;
   border: 1px solid rgba(255, 250, 243, 0.56);
