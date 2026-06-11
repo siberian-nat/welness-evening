@@ -175,7 +175,7 @@ export function Landing() {
             {t.experience.highlights.map(({ title, text }, index) => {
               const Icon = highlightIcons[index] ?? Sparkles;
               return (
-                <article className="feature-card" key={title} data-reveal data-cursor-light data-tilt-card>
+                <article className="feature-card" key={index} data-reveal data-cursor-light data-tilt-card>
                   <Icon size={24} aria-hidden="true" />
                   <h3>{title}</h3>
                   <p>{text}</p>
@@ -195,8 +195,8 @@ export function Landing() {
           </div>
 
           <div className="timeline">
-            {t.program.schedule.map(({ time, title, text }) => (
-              <article className="timeline__item" key={time} data-reveal>
+            {t.program.schedule.map(({ time, title, text }, index) => (
+              <article className="timeline__item" key={index} data-reveal>
                 <time>{time}</time>
                 <div>
                   <h3>{title}</h3>
@@ -260,7 +260,7 @@ export function Landing() {
 
           <div className="past-events-grid">
             {t.pastEvents.items.map((event, index) => (
-              <article className="past-event-card" key={event.title} data-reveal data-cursor-light data-tilt-card>
+              <article className="past-event-card" key={index} data-reveal data-cursor-light data-tilt-card>
                 <figure className="past-event-card__image">
                   <Image
                     src={pastEventImages[index] ?? pastEventImages[0]}
@@ -376,8 +376,8 @@ export function Landing() {
             <h2>{t.faq.title}</h2>
           </div>
           <div className="faq__grid">
-            {t.faq.items.map((item) => (
-              <details className="faq__item" key={item.question} data-reveal data-cursor-light>
+            {t.faq.items.map((item, index) => (
+              <details className="faq__item" key={index} data-reveal data-cursor-light>
                 <summary>
                   <h3>{item.question}</h3>
                   <Plus size={18} aria-hidden="true" />
