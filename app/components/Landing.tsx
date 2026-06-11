@@ -22,6 +22,7 @@ import {
 import { Countdown } from "./Countdown";
 import { LandingMotion } from "./LandingMotion";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { AboutCarousel } from "./AboutCarousel";
 import { useLanguage } from "../i18n/LanguageProvider";
 
 const registrationUrl =
@@ -34,6 +35,11 @@ const pastEventImages = [
   "/images/wellness-clouds.jpg",
   "/images/wellness-afterglow.png",
   "/images/wellness-still-life.png",
+];
+const atmosphereImages = [
+  "/images/wellness-atmosphere-1.jpg",
+  "/images/wellness-atmosphere-2.jpg",
+  "/images/wellness-atmosphere-3.jpg",
 ];
 
 export function Landing() {
@@ -137,7 +143,9 @@ export function Landing() {
       <section className="intro section">
         <div className="section__inner intro__grid">
           <div data-reveal>
-            <p className="eyebrow">{t.intro.eyebrow}</p>
+            <p className="eyebrow">
+              {t.intro.eyebrow.lead} <em>{t.intro.eyebrow.accent}</em>
+            </p>
             <h2>{t.intro.title}</h2>
           </div>
           <p className="intro__copy" data-reveal>
@@ -146,20 +154,39 @@ export function Landing() {
         </div>
       </section>
 
+      <section className="about section" id="about">
+        <div className="section__inner" data-reveal>
+          <AboutCarousel
+            eyebrow={t.about.eyebrow}
+            slides={t.about.slides}
+            prevLabel={t.about.controls.prev}
+            nextLabel={t.about.controls.next}
+          />
+        </div>
+      </section>
+
       <section className="poster section">
-        <div className="section__inner poster__layout">
-          <div className="poster__image" aria-hidden="true" data-reveal data-cursor-light data-tilt-card>
-            <Image
-              src="/images/wellness-still-life.png"
-              alt=""
-              fill
-              sizes="(max-width: 760px) 82vw, 420px"
-            />
-          </div>
-          <div className="poster__text" data-reveal>
-            <p className="eyebrow">{t.poster.eyebrow}</p>
-            <h2>{t.poster.title}</h2>
-            <p>{t.poster.copy}</p>
+        <div className="section__inner">
+          <p className="eyebrow poster__eyebrow" data-reveal>
+            {t.poster.eyebrow}
+          </p>
+          <div className="poster__row">
+            {t.poster.images.map((image, index) => (
+              <figure
+                className="poster__photo"
+                key={index}
+                data-reveal
+                data-cursor-light
+                data-tilt-card
+              >
+                <Image
+                  src={atmosphereImages[index] ?? atmosphereImages[0]}
+                  alt={image.alt}
+                  fill
+                  sizes="(max-width: 760px) 82vw, 33vw"
+                />
+              </figure>
+            ))}
           </div>
         </div>
       </section>
@@ -191,7 +218,6 @@ export function Landing() {
           <div className="program__sticky" data-reveal>
             <p className="eyebrow">{t.program.eyebrow}</p>
             <h2>{t.program.title}</h2>
-            <p>{t.program.copy}</p>
           </div>
 
           <div className="timeline">
@@ -204,30 +230,6 @@ export function Landing() {
                 </div>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="about section" id="about">
-        <div className="section__inner about__grid">
-          <figure className="about__photo" data-reveal data-cursor-light data-tilt-card>
-            <Image
-              src="/images/wellness-beach.jpg"
-              alt={t.about.photoAlt}
-              fill
-              sizes="(max-width: 900px) 82vw, 360px"
-            />
-            <figcaption>{t.about.caption}</figcaption>
-          </figure>
-          <div className="about__copy" data-reveal>
-            <p className="eyebrow">{t.about.eyebrow}</p>
-            <h2>{t.about.title}</h2>
-            <p>{t.about.copy}</p>
-            <div className="about__facts">
-              {t.about.facts.map((fact) => (
-                <span key={fact}>{fact}</span>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -383,6 +385,22 @@ export function Landing() {
                   <Plus size={18} aria-hidden="true" />
                 </summary>
                 <p>{item.answer}</p>
+                {item.links && (
+                  <div className="faq__links">
+                    {item.links.map((link) => (
+                      <a
+                        key={link.href}
+                        className="faq__link"
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {link.label}
+                        <ArrowUpRight size={15} aria-hidden="true" />
+                      </a>
+                    ))}
+                  </div>
+                )}
               </details>
             ))}
           </div>

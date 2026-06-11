@@ -37,14 +37,13 @@ export interface Dictionary {
     items: string[];
   };
   intro: {
-    eyebrow: string;
+    eyebrow: { lead: string; accent: string };
     title: string;
     copy: string;
   };
   poster: {
     eyebrow: string;
-    title: string;
-    copy: string;
+    images: { alt: string }[];
   };
   experience: {
     eyebrow: string;
@@ -54,16 +53,12 @@ export interface Dictionary {
   program: {
     eyebrow: string;
     title: string;
-    copy: string;
     schedule: { time: string; title: string; text: string }[];
   };
   about: {
-    photoAlt: string;
-    caption: string;
     eyebrow: string;
-    title: string;
-    copy: string;
-    facts: string[];
+    slides: { text: string; image: string; alt: string }[];
+    controls: { prev: string; next: string };
   };
   gallery: {
     ariaLabel: string;
@@ -101,7 +96,11 @@ export interface Dictionary {
   faq: {
     eyebrow: string;
     title: string;
-    items: { question: string; answer: string }[];
+    items: {
+      question: string;
+      answer: string;
+      links?: { label: string; href: string }[];
+    }[];
   };
   footer: {
     meta: string;
@@ -130,35 +129,39 @@ const ru: Dictionary = {
     label: "Сменить язык",
   },
   hero: {
-    eyebrow: "Амстердам / 27 июня / 10 мест",
+    eyebrow: "Амстердам / 27 июня / мест немного",
     title: "Wellness Evening Amsterdam",
-    lead: "Камерный вечер для девушек: стретчинг, сауна с бассейном, карты, подарки и тёплое общение в Амстердаме.",
+    lead: "Камерный вечер для девушек: стретчинг, сауна с бассейном, карточная игра We are Not Really Strangers, подарки и тёплое общение.",
     detailsAriaLabel: "Детали события",
     date: "27 июня 2026",
     time: "17:00-20:00",
-    location: "Амстердам",
+    location: "Stretch & Fold studio Amsterdam",
     primaryCta: "Забронировать место",
     ghostCta: "Смотреть программу",
     imageAlt: "Камерный wellness-вечер в Амстердаме с сауной и бассейном",
     sideTop: "Private ritual",
-    sideNumber: "10",
-    sideText: "мест в камерной группе, чтобы вечер оставался личным.",
-    sideHours: "3 часа",
+    sideNumber: "3",
+    sideText: "часа в камерном кругу. Количество мест ограничено, чтобы вечер оставался личным.",
+    sideHours: "Стретчинг · сауна",
     sidePrice: "€65",
   },
   ribbon: {
     ariaLabel: "Описание события",
-    items: ["Стретчинг", "Приватная сауна", "Бассейн", "Карты и подарки"],
+    items: ["Стретчинг", "Сауна и бассейн", "Коммьюнити", "Подарки"],
   },
   intro: {
-    eyebrow: "Для тех, кто хочет выдохнуть",
-    title: "Не тренировка и не вечеринка. Мягкий вечер для себя.",
-    copy: "Мы начнём с лёгкого стретчинга, потом перейдём в сауну и бассейн, попробуем велнес-шейк, достанем карты и завершим вечер маленькими подарками. Всё спокойно, красиво и без ощущения, что нужно куда-то успевать.",
+    eyebrow: { lead: "Вечер, чтобы", accent: "выдохнуть" },
+    title:
+      "Не тренировка и не вечеринка. Мягкий вечер для себя — и, может, подруги.",
+    copy: "Мы начнём с лёгкого стретчинга, потом познакомимся через игру в карты We are Not Really Strangers, попробуем велнес-шейк и коллаген, завершим вечер тёплой сауной, бассейном и итальянским вином с закусками по желанию. Всё спокойно, красиво и без ощущения, что нужно куда-то успевать. Уходишь как будто побывала в мини-отпуске.",
   },
   poster: {
     eyebrow: "Атмосфера",
-    title: "Мягкий свет, тёплый воздух, спокойная вода и город за дверью.",
-    copy: "Это вечер, после которого тело становится легче, голова тише, а в календаре наконец появляется что-то восстановительное.",
+    images: [
+      { alt: "Девушка в полотенце на балконе с видом на город" },
+      { alt: "Сауна с панорамным окном на закате" },
+      { alt: "Студия для стретчинга с ковриками и мягким светом" },
+    ],
   },
   experience: {
     eyebrow: "Что включено",
@@ -173,12 +176,12 @@ const ru: Dictionary = {
         text: "Приватный слот 50 минут только для нашей группы, без спешки и посторонних.",
       },
       {
-        title: "Велнес-шейк",
-        text: "Дегустация Ketology: протеин, MCT и лёгкий персиковый вкус.",
+        title: "Велнес-шейк + коллаген",
+        text: "Дегустация Ketology и коллагена от Siberian Wellness — попробуем и поговорим, зачем это телу 🍑",
       },
       {
-        title: "Карты",
-        text: "Немного магии, честные разговоры и повод мягко заглянуть внутрь себя.",
+        title: "Карты We are Not Really Strangers",
+        text: "Душевные разговоры и повод мягко заглянуть внутрь себя и узнать новых людей.",
       },
       {
         title: "Подарочный мешочек",
@@ -192,49 +195,55 @@ const ru: Dictionary = {
   },
   program: {
     eyebrow: "Программа",
-    title: "Три часа, которые идут в темпе глубокого вдоха.",
-    copy: "Начало в 17:00. Сначала мягко разогреваем тело, затем уходим в тепло и воду, а финал оставляем для разговоров, вина по желанию и подарков.",
+    title: "Как пройдёт вечер",
     schedule: [
       {
         time: "17:00",
         title: "Сбор гостей",
-        text: "Чай, знакомство, полотенца и мягкое переключение из городского темпа.",
+        text: "Попробуем протеиновый бленд Ketology и коллаген, который я пью сама. Приземляемся и переключаемся из городского темпа.",
       },
       {
-        time: "17:20",
+        time: "17:30",
         title: "Стретчинг",
         text: "Лёгкое движение, дыхание и расслабление всего тела.",
       },
       {
-        time: "18:05",
-        title: "Карты и шейк",
-        text: "Дегустация Ketology, карты и разговоры в камерном кругу.",
+        time: "18:30",
+        title: "Карты We are Not Really Strangers",
+        text: "Познакомимся друг с другом и плавно настроимся на спа и разговоры у бассейна.",
       },
       {
-        time: "18:35",
+        time: "19:00",
         title: "Сауна и бассейн",
-        text: "Приватная сауна 50 минут, вода, тепло и восстановление.",
-      },
-      {
-        time: "19:35",
-        title: "Вино, подарки и финал",
-        text: "Свободное общение, подарочные мешочки и спокойное завершение.",
+        text: "Приватная сауна 50 минут, вода, тепло и восстановление. Вино и общение.",
       },
       {
         time: "20:00",
         title: "Завершение",
-        text: "Уходим легче, теплее и с ощущением маленького отпуска.",
+        text: "Уходим с ощущением маленького отпуска.",
       },
     ],
   },
   about: {
-    photoAlt: "Плейсхолдер фото Наташи, организатора Wellness Evening Amsterdam",
-    caption: "Фото Наташи",
     eyebrow: "О Наташе",
-    title:
-      "Наташа собирает вечер так, чтобы в нём было спокойно с первой минуты.",
-    copy: "В фокусе не идеальная растяжка, а ощущение заботы: понятные инструкции, мягкий темп, личный контакт и пространство, где можно прийти без подготовки.",
-    facts: ["Камерная группа", "Только 10 мест", "Личное подтверждение брони"],
+    slides: [
+      {
+        text: "Привет, я Наташа 🤍 Wellness-амбассадор · Siberian Wellness. С детства танцую латину — движение для меня буквально жизнь. Урал, Питер, Москва, Роттердам, Амстердам — в каждом городе всегда включала этот self-care ритуал: йога, пилатес, растяжка, танцы. Люблю то ощущение в теле после практики — когда всё на месте и можно просто дышать. Вижу: как только подключаешься к себе через тело, тревожность уходит, дышать легче, телу приятно. В этот вечер хочу подарить тебе именно это ощущение. Верю, что красота идёт изнутри наружу — когда всё хорошо с ЖКТ, нервной системой и иммунитетом, кожа, волосы и энергия скажут спасибо сами.",
+        image: "/images/wellness-natasha-1.jpg",
+        alt: "Наташа у бассейна на крыше с видом на город",
+      },
+      {
+        text: "Ещё я фанат интерьерного дизайна — брала курсы и слежу за этим постоянно. Для меня важно, как выглядит и ощущается пространство: свет, материалы, детали. Это тоже часть велнеса — среда влияет на настроение и состояние не меньше, чем практика. Поэтому выбрала одно из самых красивых мест Амстердама.",
+        image: "/images/wellness-natasha-2.jpg",
+        alt: "Наташа на крыше с видом на воду и марину",
+      },
+      {
+        text: "Мечтаю создать sisterhood — женский круг, где движение, нутрициология и забота о себе живут рядом. Этот вечер — первый шаг. А ещё хочу строить кофейную и велнес-карту Амстердама вместе, ужинать в новых местах и создавать что-то классное. Если захочешь разобраться в нутритивной поддержке для себя — поговорим об этом тоже: расскажу, какие саплименты помогают восполнить дефициты и как распознать сигналы организма 🤍",
+        image: "/images/wellness-natasha-3.jpg",
+        alt: "Наташа на коврике для стретчинга с видом на город",
+      },
+    ],
+    controls: { prev: "Предыдущая карточка", next: "Следующая карточка" },
   },
   gallery: {
     ariaLabel: "Галерея атмосферы",
@@ -270,21 +279,21 @@ const ru: Dictionary = {
     copy: "Оплата при бронировании. После заявки Наташа напишет лично и пришлёт детали для перевода через Tikkie или Revolut.",
     details: [
       "~3 часа программы",
-      "Приватный формат, только 10 мест",
+      "Приватный формат, количество мест ограничено",
       "Стретчинг, сауна, бассейн, карты и подарки",
       "Место бронируется предоплатой",
     ],
     spotsLabel: "Осталось мест",
     spotsCopy:
-      "Камерный формат: максимум 10 гостей. Место закрепляется после оплаты.",
+      "Камерный формат: число гостей ограничено. Место закрепляется после оплаты.",
     cta: "Забронировать",
   },
   reserve: {
     eyebrow: "Бронирование",
-    title: "Всего 10 мест. Пространству нужно оставаться просторным.",
-    copy: "Если 27 июня звучит как вечер, который нужен телу и голове, оставь заявку. Точный адрес студии в Амстердаме придёт после подтверждения брони.",
+    title: "Количество мест ограничено.",
+    copy: "Если 27 июня звучит как вечер, который нужен телу и голове, оставь заявку.",
     assurances: [
-      "Всего 10 мест, чтобы вечер оставался личным",
+      "Места ограниченны, чтобы вечер оставался личным",
       "Опыт йоги или стретчинга не нужен",
       "Коврики, полотенца и пропсы предоставляет студия",
       "Место фиксируется после оплаты через Tikkie или Revolut",
@@ -292,7 +301,7 @@ const ru: Dictionary = {
     panelAriaLabel: "Панель бронирования",
     panelDate: "27 июня",
     panelMetaActivities: "Стретчинг / сауна / бассейн",
-    panelMetaLocation: "Амстердам",
+    panelMetaLocation: "Stretch & Fold, Amsterdam",
     panelMetaPrice: "€65 всё включено",
     cta: "Оставить заявку",
   },
@@ -308,7 +317,7 @@ const ru: Dictionary = {
       {
         question: "Что взять с собой?",
         answer:
-          "Купальник для бассейна и сауны, удобную одежду для стретчинга и личные мелочи, которые нужны после воды.",
+          "Любимые слиперы, купальник, удобную одежду для стретчинга и личные мелочи, которые нужны после воды.",
       },
       {
         question: "Как происходит оплата?",
@@ -318,12 +327,22 @@ const ru: Dictionary = {
       {
         question: "Где находится Stretch & Fold?",
         answer:
-          "Студия находится в Амстердаме. Точный адрес придёт после бронирования.",
+          "Студия Stretch & Fold находится в Амстердаме — точку на карте и атмосферу студии можно посмотреть по ссылкам ниже.",
+        links: [
+          {
+            label: "Открыть на карте",
+            href: "https://maps.app.goo.gl/ZUDP5bPAwPhTEebp8?g_st=ic",
+          },
+          {
+            label: "Студия в Instagram",
+            href: "https://www.instagram.com/stretchandfoldstudio?igsh=MWJuaWQ4cnMxdmhteQ==",
+          },
+        ],
       },
     ],
   },
   footer: {
-    meta: "Амстердам / 27.06.2026 / 17:00 / 10 мест",
+    meta: "Амстердам / 27.06.2026 / 17:00 / мест немного",
   },
   mobileCta: "Забронировать",
   countdown: {
@@ -349,35 +368,38 @@ const en: Dictionary = {
     label: "Change language",
   },
   hero: {
-    eyebrow: "Amsterdam / June 27 / 10 spots",
+    eyebrow: "Amsterdam / June 27 / limited spots",
     title: "Wellness Evening Amsterdam",
-    lead: "An intimate evening for women: stretching, a sauna with a pool, cards, gifts and warm company in Amsterdam.",
+    lead: "An intimate evening for women: stretching, a sauna with a pool, the card game We are Not Really Strangers, gifts and warm company.",
     detailsAriaLabel: "Event details",
     date: "June 27, 2026",
     time: "17:00-20:00",
-    location: "Amsterdam",
+    location: "Stretch & Fold studio Amsterdam",
     primaryCta: "Reserve your spot",
     ghostCta: "See the program",
     imageAlt: "Intimate wellness evening in Amsterdam with a sauna and pool",
     sideTop: "Private ritual",
-    sideNumber: "10",
-    sideText: "spots in an intimate group, so the evening stays personal.",
-    sideHours: "3 hours",
+    sideNumber: "3",
+    sideText: "hours in an intimate circle. Spots are limited, so the evening stays personal.",
+    sideHours: "Stretch · sauna",
     sidePrice: "€65",
   },
   ribbon: {
     ariaLabel: "Event summary",
-    items: ["Stretching", "Private sauna", "Pool", "Cards & gifts"],
+    items: ["Stretching", "Sauna & pool", "Community", "Gifts"],
   },
   intro: {
-    eyebrow: "For those who want to exhale",
-    title: "Not a workout, not a party. A gentle evening for yourself.",
-    copy: "We start with gentle stretching, then move into the sauna and pool, try a wellness shake, pull out the cards and close the evening with little gifts. Everything calm, beautiful and without any feeling that you need to rush.",
+    eyebrow: { lead: "An evening to", accent: "exhale" },
+    title: "Not a workout, not a party. A gentle evening for yourself — and maybe a friend.",
+    copy: "We start with gentle stretching, then get to know each other through the card game We are Not Really Strangers, try a wellness shake and collagen, and close the evening with a warm sauna, the pool and Italian wine with snacks if you like. Everything calm, beautiful and without any feeling that you need to rush. You leave as if you'd been on a mini-vacation.",
   },
   poster: {
     eyebrow: "Atmosphere",
-    title: "Soft light, warm air, calm water and the city just outside the door.",
-    copy: "It's an evening after which the body feels lighter, the mind quieter, and your calendar finally holds something restorative.",
+    images: [
+      { alt: "Woman in a towel on a balcony with a city view" },
+      { alt: "Sauna with a panoramic window at sunset" },
+      { alt: "Stretching studio with mats and soft light" },
+    ],
   },
   experience: {
     eyebrow: "What's included",
@@ -392,12 +414,12 @@ const en: Dictionary = {
         text: "A private 50-minute slot just for our group, unhurried and without strangers.",
       },
       {
-        title: "Wellness shake",
-        text: "A Ketology tasting: protein, MCT and a light peach flavour.",
+        title: "Wellness shake + collagen",
+        text: "A tasting of Ketology and collagen by Siberian Wellness — we'll try it and talk about why the body needs it 🍑",
       },
       {
-        title: "Cards",
-        text: "A little magic, honest conversations and a reason to gently look inward.",
+        title: "We are Not Really Strangers cards",
+        text: "Heartfelt conversations and a reason to gently look inward and get to know new people.",
       },
       {
         title: "Gift bag",
@@ -411,48 +433,55 @@ const en: Dictionary = {
   },
   program: {
     eyebrow: "Program",
-    title: "Three hours that move at the pace of a deep breath.",
-    copy: "We start at 17:00. First we gently warm up the body, then move into warmth and water, and save the finale for conversation, wine if you like and gifts.",
+    title: "How the evening flows",
     schedule: [
       {
         time: "17:00",
         title: "Arrival",
-        text: "Tea, introductions, towels and a soft shift out of the city pace.",
+        text: "We'll try the Ketology protein blend and the collagen I drink myself. We land and shift out of the city pace.",
       },
       {
-        time: "17:20",
+        time: "17:30",
         title: "Stretching",
         text: "Light movement, breathing and full-body relaxation.",
       },
       {
-        time: "18:05",
-        title: "Cards & shake",
-        text: "A Ketology tasting, cards and conversation in an intimate circle.",
+        time: "18:30",
+        title: "We are Not Really Strangers cards",
+        text: "We get to know each other and gently tune into the spa and poolside conversations.",
       },
       {
-        time: "18:35",
+        time: "19:00",
         title: "Sauna & pool",
-        text: "A private 50-minute sauna, water, warmth and recovery.",
-      },
-      {
-        time: "19:35",
-        title: "Wine, gifts & finale",
-        text: "Easy conversation, gift bags and a calm wrap-up.",
+        text: "A private 50-minute sauna, water, warmth and recovery. Wine and conversation.",
       },
       {
         time: "20:00",
         title: "Closing",
-        text: "We leave lighter, warmer and with the feeling of a little vacation.",
+        text: "We leave with the feeling of a little vacation.",
       },
     ],
   },
   about: {
-    photoAlt: "Placeholder photo of Natasha, host of Wellness Evening Amsterdam",
-    caption: "Photo of Natasha",
     eyebrow: "About Natasha",
-    title: "Natasha shapes the evening so it feels calm from the very first minute.",
-    copy: "The focus isn't a perfect stretch but a feeling of care: clear guidance, a gentle pace, personal contact and a space you can come to without any preparation.",
-    facts: ["Intimate group", "Only 10 spots", "Personal booking confirmation"],
+    slides: [
+      {
+        text: "Hi, I'm Natasha 🤍 Wellness ambassador · Siberian Wellness. I've danced Latin since childhood — movement is literally life for me. The Urals, St. Petersburg, Moscow, Rotterdam, Amsterdam — in every city I kept up this self-care ritual: yoga, pilates, stretching, dancing. I love that feeling in the body after a practice, when everything is in place and you can just breathe. I see how, the moment you connect with yourself through the body, anxiety fades, breathing gets easier, the body feels good. On this evening I want to give you exactly that feeling. I believe beauty comes from the inside out — when your gut, nervous system and immunity are well, your skin, hair and energy say thank you on their own.",
+        image: "/images/wellness-natasha-1.jpg",
+        alt: "Natasha by the rooftop pool with a city view",
+      },
+      {
+        text: "I'm also a huge fan of interior design — I've taken courses and follow it all the time. How a space looks and feels matters to me: light, materials, details. That's part of wellness too — your environment shapes your mood and state no less than the practice itself. That's why I chose one of the most beautiful places in Amsterdam.",
+        image: "/images/wellness-natasha-2.jpg",
+        alt: "Natasha on a rooftop overlooking the water and marina",
+      },
+      {
+        text: "I dream of creating a sisterhood — a women's circle where movement, nutrition and self-care live side by side. This evening is the first step. I also want to build a coffee and wellness map of Amsterdam together, have dinner in new places and create something wonderful. And if you'd like to figure out nutritional support for yourself, we'll talk about that too — I'll share which supplements help replenish deficiencies and how to read your body's signals 🤍",
+        image: "/images/wellness-natasha-3.jpg",
+        alt: "Natasha on a stretching mat with a city view",
+      },
+    ],
+    controls: { prev: "Previous card", next: "Next card" },
   },
   gallery: {
     ariaLabel: "Atmosphere gallery",
@@ -488,21 +517,21 @@ const en: Dictionary = {
     copy: "Payment on booking. After your request Natasha will message you personally and send the details for a transfer via Tikkie or Revolut.",
     details: [
       "~3 hours of program",
-      "Private format, only 10 spots",
+      "Private format, limited number of spots",
       "Stretching, sauna, pool, cards and gifts",
       "Your spot is held with a prepayment",
     ],
     spotsLabel: "Spots left",
     spotsCopy:
-      "Intimate format: 10 guests maximum. Your spot is held once payment is made.",
+      "Intimate format: the number of guests is limited. Your spot is held once payment is made.",
     cta: "Reserve",
   },
   reserve: {
     eyebrow: "Booking",
-    title: "Only 10 spots. The space needs to stay spacious.",
-    copy: "If June 27 sounds like an evening your body and mind need, leave a request. The exact studio address in Amsterdam arrives after your booking is confirmed.",
+    title: "The number of spots is limited.",
+    copy: "If June 27 sounds like an evening your body and mind need, leave a request.",
     assurances: [
-      "Only 10 spots, so the evening stays personal",
+      "Spots are limited, so the evening stays personal",
       "No yoga or stretching experience needed",
       "Mats, towels and props are provided by the studio",
       "Your spot is confirmed after payment via Tikkie or Revolut",
@@ -510,7 +539,7 @@ const en: Dictionary = {
     panelAriaLabel: "Booking panel",
     panelDate: "June 27",
     panelMetaActivities: "Stretching / sauna / pool",
-    panelMetaLocation: "Amsterdam",
+    panelMetaLocation: "Stretch & Fold, Amsterdam",
     panelMetaPrice: "€65 all included",
     cta: "Send a request",
   },
@@ -526,7 +555,7 @@ const en: Dictionary = {
       {
         question: "What should I bring?",
         answer:
-          "A swimsuit for the pool and sauna, comfortable clothes for stretching and any personal bits you need after the water.",
+          "Your favourite slippers, a swimsuit, comfortable clothes for stretching and any personal bits you need after the water.",
       },
       {
         question: "How does payment work?",
@@ -536,12 +565,22 @@ const en: Dictionary = {
       {
         question: "Where is Stretch & Fold?",
         answer:
-          "The studio is in Amsterdam. The exact address arrives after booking.",
+          "Stretch & Fold studio is in Amsterdam — you can see the exact spot on the map and the studio's vibe via the links below.",
+        links: [
+          {
+            label: "Open in Maps",
+            href: "https://maps.app.goo.gl/ZUDP5bPAwPhTEebp8?g_st=ic",
+          },
+          {
+            label: "Studio on Instagram",
+            href: "https://www.instagram.com/stretchandfoldstudio?igsh=MWJuaWQ4cnMxdmhteQ==",
+          },
+        ],
       },
     ],
   },
   footer: {
-    meta: "Amsterdam / 27.06.2026 / 17:00 / 10 spots",
+    meta: "Amsterdam / 27.06.2026 / 17:00 / limited spots",
   },
   mobileCta: "Reserve",
   countdown: {
