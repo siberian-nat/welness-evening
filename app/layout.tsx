@@ -6,13 +6,13 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Wellness Evening Amsterdam | Stretch & Sauna Event June 27",
+  title: "Wellness Evening · Amsterdam · 27.06",
   description:
-    "An intimate wellness evening in Amsterdam with guided stretching, private sauna, pool access, and nourishing refreshments. Only 10 places available.",
+    "Стретчинг, сауна с бассейном, карты и подарки — камерный вечер для девушек в Амстердаме.",
   openGraph: {
-    title: "Wellness Evening Amsterdam",
+    title: "Wellness Evening · Amsterdam · 27.06",
     description:
-      "Guided stretch, private sauna, pool access, and wellness refreshments on June 27 in Amsterdam.",
+      "Стретчинг, сауна с бассейном, карты и подарки — камерный вечер для девушек в Амстердаме",
     url: siteUrl,
     siteName: "Wellness Evening Amsterdam",
     images: [
@@ -20,17 +20,17 @@ export const metadata: Metadata = {
         url: "/images/wellness-hero.png",
         width: 1536,
         height: 1024,
-        alt: "Premium Amsterdam rooftop wellness evening with sauna and pool",
+        alt: "Wellness Evening Amsterdam: стретчинг, сауна и бассейн",
       },
     ],
-    locale: "en_US",
+    locale: "ru_RU",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wellness Evening Amsterdam",
+    title: "Wellness Evening · Amsterdam · 27.06",
     description:
-      "A restorative stretch and sauna evening in Amsterdam. June 27, 10 places.",
+      "Стретчинг, сауна с бассейном, карты и подарки — камерный вечер для девушек в Амстердаме.",
     images: ["/images/wellness-hero.png"],
   },
   icons: {
@@ -49,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body>{children}</body>
     </html>
   );

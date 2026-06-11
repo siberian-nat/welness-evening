@@ -38,16 +38,16 @@ export function Countdown() {
 
   const parts = useMemo(
     () => [
-      ["days", timeLeft.days],
-      ["hours", timeLeft.hours],
-      ["minutes", timeLeft.minutes],
-      ["seconds", timeLeft.seconds],
+      ["дней", timeLeft.days],
+      ["часов", timeLeft.hours],
+      ["минут", timeLeft.minutes],
+      ["секунд", timeLeft.seconds],
     ],
     [timeLeft],
   );
 
   return (
-    <div className="countdown" aria-label="Countdown to the wellness evening">
+    <div className="countdown" aria-label="Обратный отсчёт до wellness-вечера">
       {parts.map(([label, value]) => (
         <div className="countdown__item" key={label}>
           <strong>{String(value).padStart(2, "0")}</strong>

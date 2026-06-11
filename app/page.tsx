@@ -2,11 +2,13 @@ import Image from "next/image";
 import {
   ArrowUpRight,
   CalendarDays,
+  Camera,
   Check,
   CircleDot,
   Clock3,
   Droplets,
   Flame,
+  Gift,
   Leaf,
   MapPin,
   Sparkles,
@@ -25,56 +27,93 @@ const isExternalRegistration = registrationUrl.startsWith("http");
 const highlights = [
   {
     icon: Leaf,
-    title: "Guided stretch",
-    text: "A slow, elegant mobility practice designed to soften the nervous system and open the body.",
-  },
-  {
-    icon: Flame,
-    title: "Private sauna",
-    text: "Heat, quiet, and recovery in a private setting reserved for the group.",
+    title: "Стретчинг",
+    text: "Мягкое движение и дыхание, чтобы снять напряжение после недели. Опыт не нужен.",
   },
   {
     icon: Waves,
-    title: "Pool access",
-    text: "A refreshing swim ritual between movement, warmth, and conversation.",
+    title: "Сауна + бассейн",
+    text: "Приватный слот 50 минут только для нашей группы, без спешки и посторонних.",
+  },
+  {
+    icon: Droplets,
+    title: "Велнес-шейк",
+    text: "Дегустация Ketology: протеин, MCT и лёгкий персиковый вкус.",
   },
   {
     icon: Sparkles,
-    title: "Wellness refreshments",
-    text: "Light bites, mineral water, herbal infusions, and small finishing details.",
+    title: "Карты",
+    text: "Немного магии, честные разговоры и повод мягко заглянуть внутрь себя.",
+  },
+  {
+    icon: Gift,
+    title: "Подарочный мешочек",
+    text: "Каждая уходит с маленьким приятным сюрпризом после вечера.",
+  },
+  {
+    icon: Flame,
+    title: "Вино по желанию",
+    text: "Бокал в приятной компании у бассейна для тех, кому хочется.",
   },
 ];
 
 const schedule = [
-  ["18:30", "Arrival", "Tea, towels, soft landing, and a moment to switch off."],
-  ["18:50", "Stretch", "A guided full-body release with breath-led pacing."],
-  ["19:35", "Sauna", "Private sauna rotation with calm recovery pauses."],
-  ["20:20", "Pool", "Unhurried pool access and a quiet reset."],
-  ["21:00", "Refreshments", "Light wellness table, conversation, and closing ritual."],
+  ["18:30", "Сбор гостей", "Чай, знакомство, полотенца и мягкое переключение из городского темпа."],
+  ["18:50", "Стретчинг", "Лёгкое движение, дыхание и расслабление всего тела."],
+  ["19:35", "Карты и шейк", "Дегустация Ketology, карты и разговоры в камерном кругу."],
+  ["20:05", "Сауна и бассейн", "Приватная сауна 50 минут, вода, тепло и восстановление."],
+  ["21:05", "Вино, подарки и финал", "Свободное общение, подарочные мешочки и спокойное завершение."],
+  ["21:30", "Завершение", "Уходим легче, теплее и с ощущением маленького отпуска."],
 ];
 
 const assurances = [
-  "Small group of 10 guests",
-  "No previous stretch experience needed",
-  "Towels and refreshments included",
-  "Designed as a calm premium evening, not a workout class",
+  "Всего 10 мест, чтобы вечер оставался личным",
+  "Опыт йоги или стретчинга не нужен",
+  "Коврики, полотенца и пропсы предоставляет студия",
+  "Место фиксируется после оплаты через Tikkie или Revolut",
 ];
 
 const faqs = [
   {
-    question: "Do I need to be flexible?",
+    question: "Нужен ли опыт в йоге?",
     answer:
-      "No. The stretch session is slow, accessible, and guided with options for different bodies.",
+      "Нет, совсем. Это лёгкий вечерний стретчинг, который подходит всем без исключения.",
   },
   {
-    question: "What should I bring?",
+    question: "Что взять с собой?",
     answer:
-      "Swimwear, comfortable clothes for stretching, and anything personal you like after sauna.",
+      "Купальник для бассейна и сауны, удобную одежду для стретчинга и личные мелочи, которые нужны после воды.",
   },
   {
-    question: "How many people can join?",
+    question: "Как происходит оплата?",
     answer:
-      "Only 10 places are available so the evening stays calm, personal, and easy to host well.",
+      "После заявки Наташа напишет лично. Оплата через Tikkie или Revolut, место закрепляется после перевода.",
+  },
+  {
+    question: "Где находится Stretch & Fold?",
+    answer:
+      "Студия находится в Амстердаме. Точный адрес придёт после бронирования.",
+  },
+];
+
+const pastEvents = [
+  {
+    title: "Амстердам",
+    text: "Встреча в парке",
+    image: "/images/wellness-clouds.jpg",
+    alt: "Плейсхолдер фото прошлой встречи в парке в Амстердаме",
+  },
+  {
+    title: "Барселона",
+    text: "Встреча в студии",
+    image: "/images/wellness-afterglow.png",
+    alt: "Плейсхолдер фото прошлой встречи в студии в Барселоне",
+  },
+  {
+    title: "Скоро",
+    text: "Фото или логотип",
+    image: "/images/wellness-still-life.png",
+    alt: "Плейсхолдер для третьего фото или логотипа",
   },
 ];
 
@@ -90,7 +129,7 @@ export default function Home() {
     maximumAttendeeCapacity: 10,
     location: {
       "@type": "Place",
-      name: "Private wellness location",
+      name: "Приватная wellness-локация",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Amsterdam",
@@ -103,10 +142,12 @@ export default function Home() {
       `${siteUrl}/images/wellness-afterglow.png`,
     ],
     description:
-      "An intimate wellness evening in Amsterdam with guided stretching, private sauna, pool access, and nourishing refreshments.",
+      "Камерный wellness-вечер для девушек в Амстердаме: стретчинг, сауна с бассейном, карты, подарки и мягкое общение.",
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/LimitedAvailability",
+      price: "65",
+      priceCurrency: "EUR",
       url: registrationUrl,
     },
   };
@@ -122,7 +163,7 @@ export default function Home() {
         <Image
           className="hero__image"
           src="/images/wellness-hero.png"
-          alt="Premium Amsterdam rooftop wellness evening with sauna and pool"
+          alt="Камерный wellness-вечер в Амстердаме с сауной и бассейном"
           fill
           priority
           loading="eager"
@@ -130,29 +171,30 @@ export default function Home() {
         />
         <div className="hero__shade" />
 
-        <nav className="nav" aria-label="Main navigation">
+        <nav className="nav" aria-label="Основная навигация">
           <a className="nav__brand" href="#top">
             Wellness
           </a>
           <div className="nav__links">
-            <a href="#experience">Experience</a>
-            <a href="#program">Program</a>
-            <a href="#reserve">Reserve</a>
+            <a href="#experience">Что внутри</a>
+            <a href="#program">Программа</a>
+            <a href="#price">Цена</a>
+            <a href="#reserve">Бронь</a>
           </div>
         </nav>
 
         <div className="hero__content">
-          <p className="eyebrow">Amsterdam / June 27 / 10 places</p>
+          <p className="eyebrow">Амстердам / 27 июня / 10 мест</p>
           <h1>Wellness Evening Amsterdam</h1>
           <p className="hero__lead">
-            A private stretch, sauna, and pool ritual for the kind of evening
-            that makes the body exhale before the weekend begins.
+            Камерный вечер для девушек: стретчинг, сауна с бассейном,
+            карты, подарки и тёплое общение в Амстердаме.
           </p>
 
-          <div className="hero__details" aria-label="Event details">
+          <div className="hero__details" aria-label="Детали события">
             <span>
               <CalendarDays size={18} aria-hidden="true" />
-              June 27, 2026
+              27 июня 2026
             </span>
             <span>
               <Clock3 size={18} aria-hidden="true" />
@@ -160,7 +202,7 @@ export default function Home() {
             </span>
             <span>
               <MapPin size={18} aria-hidden="true" />
-              Amsterdam
+              Амстердам
             </span>
           </div>
 
@@ -171,37 +213,37 @@ export default function Home() {
               target={isExternalRegistration ? "_blank" : undefined}
               rel={isExternalRegistration ? "noreferrer" : undefined}
             >
-              Reserve a place
+              Забронировать место
               <ArrowUpRight size={18} aria-hidden="true" />
             </a>
             <a className="button button--ghost" href="#program">
-              See the evening
+              Смотреть программу
             </a>
           </div>
         </div>
       </section>
 
       <div className="ribbon" aria-label="Event summary">
-        <span>Guided stretch</span>
+        <span>Стретчинг</span>
         <CircleDot size={12} aria-hidden="true" />
-        <span>Private sauna</span>
+        <span>Приватная сауна</span>
         <CircleDot size={12} aria-hidden="true" />
-        <span>Pool access</span>
+        <span>Бассейн</span>
         <CircleDot size={12} aria-hidden="true" />
-        <span>Wellness refreshments</span>
+        <span>Карты и подарки</span>
       </div>
 
       <section className="intro section">
         <div className="section__inner intro__grid">
           <div>
-            <p className="eyebrow">Designed to feel different</p>
-            <h2>A calm social ritual, made intimate.</h2>
+            <p className="eyebrow">Для тех, кто хочет выдохнуть</p>
+            <h2>Не тренировка и не вечеринка. Мягкий вечер для себя.</h2>
           </div>
           <p className="intro__copy">
-            The evening moves through stretch, heat, water, and a soft closing
-            table. Nothing rushed, nothing loud. Just a beautiful private
-            setting, a small group, and the rare feeling of having nowhere else
-            to be.
+            Мы начнём с лёгкого стретчинга, потом перейдём в сауну и бассейн,
+            попробуем велнес-шейк, достанем карты и завершим вечер маленькими
+            подарками. Всё спокойно, красиво и без ощущения, что нужно куда-то
+            успевать.
           </p>
         </div>
       </section>
@@ -217,12 +259,11 @@ export default function Home() {
             />
           </div>
           <div className="poster__text">
-            <p className="eyebrow">The atmosphere</p>
-            <h2>Soft light. Warm air. Quiet water. The city left outside.</h2>
+            <p className="eyebrow">Атмосфера</p>
+            <h2>Мягкий свет, тёплый воздух, спокойная вода и город за дверью.</h2>
             <p>
-              A premium evening for people who want their body to feel lighter,
-              their mind to feel quieter, and their calendar to finally include
-              something restorative.
+              Это вечер, после которого тело становится легче, голова тише,
+              а в календаре наконец появляется что-то восстановительное.
             </p>
           </div>
         </div>
@@ -231,8 +272,8 @@ export default function Home() {
       <section className="experience section" id="experience">
         <div className="section__inner">
           <div className="section__header">
-            <p className="eyebrow">Included</p>
-            <h2>Everything is curated around the reset.</h2>
+            <p className="eyebrow">Что включено</p>
+            <h2>Всё собрано вокруг мягкого восстановления.</h2>
           </div>
 
           <div className="feature-grid">
@@ -250,11 +291,12 @@ export default function Home() {
       <section className="program section" id="program">
         <div className="section__inner program__grid">
           <div className="program__sticky">
-            <p className="eyebrow">Program</p>
-            <h2>Three hours, paced like a deep breath.</h2>
+            <p className="eyebrow">Программа</p>
+            <h2>Три часа, которые идут в темпе глубокого вдоха.</h2>
             <p>
-              The flow is built to ease guests into the space, warm the body,
-              refresh with water, and close without the usual post-event noise.
+              Начало в 18:30. Сначала мягко разогреваем тело, затем уходим в
+              тепло и воду, а финал оставляем для разговоров, вина по желанию
+              и подарков.
             </p>
           </div>
 
@@ -272,23 +314,125 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="gallery section" aria-label="Mood gallery">
+      <section className="about section" id="about">
+        <div className="section__inner about__grid">
+          <figure className="about__photo">
+            <Image
+              src="/images/wellness-beach.jpg"
+              alt="Плейсхолдер фото Наташи, организатора Wellness Evening Amsterdam"
+              fill
+              sizes="(max-width: 900px) 82vw, 360px"
+            />
+            <figcaption>Фото Наташи</figcaption>
+          </figure>
+          <div className="about__copy">
+            <p className="eyebrow">О Наташе</p>
+            <h2>Наташа собирает вечер так, чтобы в нём было спокойно с первой минуты.</h2>
+            <p>
+              В фокусе не идеальная растяжка, а ощущение заботы: понятные
+              инструкции, мягкий темп, личный контакт и пространство, где можно
+              прийти без подготовки.
+            </p>
+            <div className="about__facts">
+              <span>Камерная группа</span>
+              <span>Только 10 мест</span>
+              <span>Личное подтверждение брони</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="gallery section" aria-label="Галерея атмосферы">
         <div className="section__inner gallery__grid">
           <figure className="gallery__large">
             <Image
               src="/images/wellness-afterglow.png"
-              alt="Warm sauna and pool afterglow with towels and candlelight"
+              alt="Тёплая атмосфера после сауны и бассейна"
               fill
+              loading="eager"
               sizes="(max-width: 900px) 100vw, 58vw"
             />
           </figure>
           <div className="gallery__caption">
-            <p className="eyebrow">Afterglow energy</p>
-            <h2>Leave with the feeling of a tiny holiday.</h2>
+            <p className="eyebrow">После вечера</p>
+            <h2>Уйти с ощущением маленького отпуска.</h2>
             <p>
-              The visual language is sunset, skin, linen, mineral water, and
-              the hush that appears after good heat and slow movement.
+              Немного тепла, воды, движения, разговоров и красивых деталей,
+              которые остаются с тобой ещё по дороге домой.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="past-events section" id="past-events">
+        <div className="section__inner">
+          <div className="section__header">
+            <p className="eyebrow">Уже было</p>
+            <h2>Прошлые встречи: живые, маленькие и очень тёплые.</h2>
+          </div>
+
+          <div className="past-events-grid">
+            {pastEvents.map((event) => (
+              <article className="past-event-card" key={event.title}>
+                <figure className="past-event-card__image">
+                  <Image
+                    src={event.image}
+                    alt={event.alt}
+                    fill
+                    sizes="(max-width: 680px) 100vw, 33vw"
+                  />
+                  <span aria-hidden="true">
+                    <Camera size={18} />
+                  </span>
+                </figure>
+                <h3>{event.title}</h3>
+                <p>{event.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="price section" id="price">
+        <div className="section__inner price__layout">
+          <div>
+            <p className="eyebrow">Стоимость</p>
+            <h2>€65 за вечер, всё включено.</h2>
+            <p>
+              Оплата при бронировании. После заявки Наташа напишет лично и
+              пришлёт детали для перевода через Tikkie или Revolut.
+            </p>
+          </div>
+
+          <div className="price__details" aria-label="Что входит в стоимость">
+            <div>~3 часа программы</div>
+            <div>Приватный формат, только 10 мест</div>
+            <div>Стретчинг, сауна, бассейн, карты и подарки</div>
+            <div>Место бронируется предоплатой</div>
+          </div>
+        </div>
+
+        <div className="section__inner">
+          <div className="spots-bar">
+            <div id="spotsCounter" style={{ display: "none" }}>
+              <div className="spots-label">Осталось мест</div>
+              <div className="spots-count" id="spotsNumber">
+                5
+              </div>
+            </div>
+            <p>
+              Камерный формат: максимум 10 гостей. Место закрепляется после
+              оплаты.
+            </p>
+            <a
+              className="button button--primary"
+              href={registrationUrl}
+              target={isExternalRegistration ? "_blank" : undefined}
+              rel={isExternalRegistration ? "noreferrer" : undefined}
+            >
+              Забронировать
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
           </div>
         </div>
       </section>
@@ -296,12 +440,12 @@ export default function Home() {
       <section className="reserve section" id="reserve">
         <div className="section__inner reserve__grid">
           <div className="reserve__copy">
-            <p className="eyebrow">Limited invitation</p>
-            <h2>Only 10 places. The room should feel spacious.</h2>
+            <p className="eyebrow">Бронирование</p>
+            <h2>Всего 10 мест. Пространству нужно оставаться просторным.</h2>
             <p>
-              This is intentionally small. If the date feels like exactly what
-              your body has been asking for, reserve now and receive the private
-              location details after confirmation.
+              Если 27 июня звучит как вечер, который нужен телу и голове,
+              оставь заявку. Точный адрес студии в Амстердаме придёт после
+              подтверждения брони.
             </p>
 
             <ul className="check-list">
@@ -314,20 +458,24 @@ export default function Home() {
             </ul>
           </div>
 
-          <aside className="booking-panel" aria-label="Booking panel">
+          <aside className="booking-panel" aria-label="Панель бронирования">
             <div className="booking-panel__top">
-              <span className="booking-panel__label">June 27</span>
+              <span className="booking-panel__label">27 июня</span>
               <Users size={24} aria-hidden="true" />
             </div>
             <Countdown />
             <div className="booking-panel__meta">
               <span>
                 <Droplets size={16} aria-hidden="true" />
-                Stretch / sauna / pool
+                Стретчинг / сауна / бассейн
               </span>
               <span>
                 <MapPin size={16} aria-hidden="true" />
-                Amsterdam
+                Амстердам
+              </span>
+              <span>
+                <Sparkles size={16} aria-hidden="true" />
+                €65 всё включено
               </span>
             </div>
             <a
@@ -336,7 +484,7 @@ export default function Home() {
               target={isExternalRegistration ? "_blank" : undefined}
               rel={isExternalRegistration ? "noreferrer" : undefined}
             >
-              Apply for a place
+              Оставить заявку
               <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </aside>
@@ -346,8 +494,8 @@ export default function Home() {
       <section className="faq section">
         <div className="section__inner">
           <div className="section__header">
-            <p className="eyebrow">Good to know</p>
-            <h2>Simple details, premium care.</h2>
+            <p className="eyebrow">Вопросы</p>
+            <h2>Всё просто: приходишь, выдыхаешь, остальное уже собрано.</h2>
           </div>
           <div className="faq__grid">
             {faqs.map((item) => (
@@ -365,9 +513,19 @@ export default function Home() {
           <a className="nav__brand" href="#top">
             Wellness
           </a>
-          <p>Amsterdam / June 27 / 10 places</p>
+          <p>Амстердам / 27.06.2026 / 18:30 / 10 мест</p>
         </div>
       </footer>
+
+      <a
+        className="mobile-booking-cta"
+        href={registrationUrl}
+        target={isExternalRegistration ? "_blank" : undefined}
+        rel={isExternalRegistration ? "noreferrer" : undefined}
+      >
+        Забронировать
+        <ArrowUpRight size={18} aria-hidden="true" />
+      </a>
     </main>
   );
 }
