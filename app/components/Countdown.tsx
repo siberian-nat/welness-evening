@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useLanguage } from "../i18n/LanguageProvider";
 
 const EVENT_TIME = new Date("2026-06-27T17:00:00+02:00").getTime();
 
@@ -23,6 +24,7 @@ function getTimeLeft(): TimeLeft {
 }
 
 export function Countdown() {
+  const { t } = useLanguage();
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
@@ -38,16 +40,16 @@ export function Countdown() {
 
   const parts = useMemo(
     () => [
-      ["дней", timeLeft.days],
-      ["часов", timeLeft.hours],
-      ["минут", timeLeft.minutes],
-      ["секунд", timeLeft.seconds],
+      [t.countdown.days, timeLeft.days],
+      [t.countdown.hours, timeLeft.hours],
+      [t.countdown.minutes, timeLeft.minutes],
+      [t.countdown.seconds, timeLeft.seconds],
     ],
-    [timeLeft],
+    [timeLeft, t],
   );
 
   return (
-    <div className="countdown" aria-label="Обратный отсчёт до wellness-вечера">
+    <div className="countdown" aria-label={t.countdown.ariaLabel}>
       {parts.map(([label, value]) => (
         <div className="countdown__item" key={label}>
           <strong>{String(value).padStart(2, "0")}</strong>

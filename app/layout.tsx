@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { LanguageProvider } from "./i18n/LanguageProvider";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://wellness-evening.vercel.app";
@@ -8,11 +9,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Wellness Evening · Amsterdam · 27.06",
   description:
-    "Стретчинг, сауна с бассейном, карты и подарки — камерный вечер для девушек в Амстердаме.",
+    "Stretching, a sauna with a pool, cards and gifts — an intimate evening for women in Amsterdam.",
   openGraph: {
     title: "Wellness Evening · Amsterdam · 27.06",
     description:
-      "Стретчинг, сауна с бассейном, карты и подарки — камерный вечер для девушек в Амстердаме",
+      "Stretching, a sauna with a pool, cards and gifts — an intimate evening for women in Amsterdam",
     url: siteUrl,
     siteName: "Wellness Evening Amsterdam",
     images: [
@@ -20,17 +21,18 @@ export const metadata: Metadata = {
         url: "/images/wellness-hero.png",
         width: 1536,
         height: 1024,
-        alt: "Wellness Evening Amsterdam: стретчинг, сауна и бассейн",
+        alt: "Wellness Evening Amsterdam: stretching, sauna and pool",
       },
     ],
-    locale: "ru_RU",
+    locale: "en_US",
+    alternateLocale: "ru_RU",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Wellness Evening · Amsterdam · 27.06",
     description:
-      "Стретчинг, сауна с бассейном, карты и подарки — камерный вечер для девушек в Амстердаме.",
+      "Stretching, a sauna with a pool, cards and gifts — an intimate evening for women in Amsterdam.",
     images: ["/images/wellness-hero.png"],
   },
   icons: {
@@ -49,8 +51,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
-      <body>{children}</body>
+    <html lang="en">
+      <body>
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }
