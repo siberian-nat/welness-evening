@@ -98,8 +98,9 @@ export default function Home() {
       },
     },
     image: [
-      `${siteUrl}/images/wellness-clouds.jpg`,
-      `${siteUrl}/images/wellness-beach.jpg`,
+      `${siteUrl}/images/wellness-hero.png`,
+      `${siteUrl}/images/wellness-still-life.png`,
+      `${siteUrl}/images/wellness-afterglow.png`,
     ],
     description:
       "An intimate wellness evening in Amsterdam with guided stretching, private sauna, pool access, and nourishing refreshments.",
@@ -120,8 +121,8 @@ export default function Home() {
       <section className="hero" id="top">
         <Image
           className="hero__image"
-          src="/images/wellness-beach.jpg"
-          alt="Evening beach atmosphere in Amsterdam"
+          src="/images/wellness-hero.png"
+          alt="Premium Amsterdam rooftop wellness evening with sauna and pool"
           fill
           priority
           loading="eager"
@@ -209,7 +210,7 @@ export default function Home() {
         <div className="section__inner poster__layout">
           <div className="poster__image" aria-hidden="true">
             <Image
-              src="/images/wellness-clouds.jpg"
+              src="/images/wellness-still-life.png"
               alt=""
               fill
               sizes="(max-width: 760px) 82vw, 420px"
@@ -275,8 +276,8 @@ export default function Home() {
         <div className="section__inner gallery__grid">
           <figure className="gallery__large">
             <Image
-              src="/images/wellness-beach.jpg"
-              alt="Evening beach scene with soft sky and sand"
+              src="/images/wellness-afterglow.png"
+              alt="Warm sauna and pool afterglow with towels and candlelight"
               fill
               sizes="(max-width: 900px) 100vw, 58vw"
             />

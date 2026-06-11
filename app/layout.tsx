@@ -17,10 +17,10 @@ export const metadata: Metadata = {
     siteName: "Wellness Evening Amsterdam",
     images: [
       {
-        url: "/images/wellness-clouds.jpg",
-        width: 1680,
-        height: 1869,
-        alt: "Soft evening clouds for Wellness Evening Amsterdam",
+        url: "/images/wellness-hero.png",
+        width: 1536,
+        height: 1024,
+        alt: "Premium Amsterdam rooftop wellness evening with sauna and pool",
       },
     ],
     locale: "en_US",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Wellness Evening Amsterdam",
     description:
       "A restorative stretch and sauna evening in Amsterdam. June 27, 10 places.",
-    images: ["/images/wellness-clouds.jpg"],
+    images: ["/images/wellness-hero.png"],
   },
   icons: {
     icon: "/favicon.svg",
