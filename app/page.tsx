@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Image from "next/image";
 import {
   ArrowUpRight,
@@ -11,11 +12,13 @@ import {
   Gift,
   Leaf,
   MapPin,
+  Plus,
   Sparkles,
   Users,
   Waves,
 } from "lucide-react";
 import { Countdown } from "./components/Countdown";
+import { LandingMotion } from "./components/LandingMotion";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://wellness-evening.vercel.app";
@@ -117,6 +120,8 @@ const pastEvents = [
   },
 ];
 
+const ribbonItems = ["Стретчинг", "Приватная сауна", "Бассейн", "Карты и подарки"];
+
 export default function Home() {
   const eventJsonLd = {
     "@context": "https://schema.org",
@@ -154,6 +159,7 @@ export default function Home() {
 
   return (
     <main>
+      <LandingMotion />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
@@ -170,6 +176,8 @@ export default function Home() {
           sizes="100vw"
         />
         <div className="hero__shade" />
+        <div className="hero__texture" aria-hidden="true" />
+        <div className="hero__waterline" aria-hidden="true" />
 
         <nav className="nav" aria-label="Основная навигация">
           <a className="nav__brand" href="#top">
@@ -183,7 +191,7 @@ export default function Home() {
           </div>
         </nav>
 
-        <div className="hero__content">
+        <div className="hero__content" data-reveal>
           <p className="eyebrow">Амстердам / 27 июня / 10 мест</p>
           <h1>Wellness Evening Amsterdam</h1>
           <p className="hero__lead">
@@ -212,34 +220,49 @@ export default function Home() {
               href={registrationUrl}
               target={isExternalRegistration ? "_blank" : undefined}
               rel={isExternalRegistration ? "noreferrer" : undefined}
+              data-cursor-light
             >
               Забронировать место
               <ArrowUpRight size={18} aria-hidden="true" />
             </a>
-            <a className="button button--ghost" href="#program">
+            <a className="button button--ghost" href="#program" data-cursor-light>
               Смотреть программу
             </a>
           </div>
         </div>
+
+        <aside className="hero__side" data-reveal data-cursor-light data-tilt-card>
+          <div className="hero__side-top">
+            <span>Private ritual</span>
+            <Sparkles size={18} aria-hidden="true" />
+          </div>
+          <strong>10</strong>
+          <p>мест в камерной группе, чтобы вечер оставался личным.</p>
+          <div className="hero__side-row">
+            <span>3 часа</span>
+            <span>€65</span>
+          </div>
+        </aside>
       </section>
 
       <div className="ribbon" aria-label="Event summary">
-        <span>Стретчинг</span>
-        <CircleDot size={12} aria-hidden="true" />
-        <span>Приватная сауна</span>
-        <CircleDot size={12} aria-hidden="true" />
-        <span>Бассейн</span>
-        <CircleDot size={12} aria-hidden="true" />
-        <span>Карты и подарки</span>
+        <div className="ribbon__track">
+          {[...ribbonItems, ...ribbonItems].map((item, index) => (
+            <Fragment key={`${item}-${index}`}>
+              <span aria-hidden={index >= ribbonItems.length}>{item}</span>
+              <CircleDot size={12} aria-hidden="true" />
+            </Fragment>
+          ))}
+        </div>
       </div>
 
       <section className="intro section">
         <div className="section__inner intro__grid">
-          <div>
+          <div data-reveal>
             <p className="eyebrow">Для тех, кто хочет выдохнуть</p>
             <h2>Не тренировка и не вечеринка. Мягкий вечер для себя.</h2>
           </div>
-          <p className="intro__copy">
+          <p className="intro__copy" data-reveal>
             Мы начнём с лёгкого стретчинга, потом перейдём в сауну и бассейн,
             попробуем велнес-шейк, достанем карты и завершим вечер маленькими
             подарками. Всё спокойно, красиво и без ощущения, что нужно куда-то
@@ -250,7 +273,7 @@ export default function Home() {
 
       <section className="poster section">
         <div className="section__inner poster__layout">
-          <div className="poster__image" aria-hidden="true">
+          <div className="poster__image" aria-hidden="true" data-reveal data-cursor-light data-tilt-card>
             <Image
               src="/images/wellness-still-life.png"
               alt=""
@@ -258,7 +281,7 @@ export default function Home() {
               sizes="(max-width: 760px) 82vw, 420px"
             />
           </div>
-          <div className="poster__text">
+          <div className="poster__text" data-reveal>
             <p className="eyebrow">Атмосфера</p>
             <h2>Мягкий свет, тёплый воздух, спокойная вода и город за дверью.</h2>
             <p>
@@ -271,14 +294,14 @@ export default function Home() {
 
       <section className="experience section" id="experience">
         <div className="section__inner">
-          <div className="section__header">
+          <div className="section__header" data-reveal>
             <p className="eyebrow">Что включено</p>
             <h2>Всё собрано вокруг мягкого восстановления.</h2>
           </div>
 
           <div className="feature-grid">
             {highlights.map(({ icon: Icon, title, text }) => (
-              <article className="feature-card" key={title}>
+              <article className="feature-card" key={title} data-reveal data-cursor-light data-tilt-card>
                 <Icon size={24} aria-hidden="true" />
                 <h3>{title}</h3>
                 <p>{text}</p>
@@ -290,7 +313,7 @@ export default function Home() {
 
       <section className="program section" id="program">
         <div className="section__inner program__grid">
-          <div className="program__sticky">
+          <div className="program__sticky" data-reveal>
             <p className="eyebrow">Программа</p>
             <h2>Три часа, которые идут в темпе глубокого вдоха.</h2>
             <p>
@@ -302,7 +325,7 @@ export default function Home() {
 
           <div className="timeline">
             {schedule.map(([time, title, text]) => (
-              <article className="timeline__item" key={time}>
+              <article className="timeline__item" key={time} data-reveal>
                 <time>{time}</time>
                 <div>
                   <h3>{title}</h3>
@@ -316,7 +339,7 @@ export default function Home() {
 
       <section className="about section" id="about">
         <div className="section__inner about__grid">
-          <figure className="about__photo">
+          <figure className="about__photo" data-reveal data-cursor-light data-tilt-card>
             <Image
               src="/images/wellness-beach.jpg"
               alt="Плейсхолдер фото Наташи, организатора Wellness Evening Amsterdam"
@@ -325,7 +348,7 @@ export default function Home() {
             />
             <figcaption>Фото Наташи</figcaption>
           </figure>
-          <div className="about__copy">
+          <div className="about__copy" data-reveal>
             <p className="eyebrow">О Наташе</p>
             <h2>Наташа собирает вечер так, чтобы в нём было спокойно с первой минуты.</h2>
             <p>
@@ -344,7 +367,7 @@ export default function Home() {
 
       <section className="gallery section" aria-label="Галерея атмосферы">
         <div className="section__inner gallery__grid">
-          <figure className="gallery__large">
+          <figure className="gallery__large" data-reveal data-cursor-light>
             <Image
               src="/images/wellness-afterglow.png"
               alt="Тёплая атмосфера после сауны и бассейна"
@@ -353,7 +376,7 @@ export default function Home() {
               sizes="(max-width: 900px) 100vw, 58vw"
             />
           </figure>
-          <div className="gallery__caption">
+          <div className="gallery__caption" data-reveal>
             <p className="eyebrow">После вечера</p>
             <h2>Уйти с ощущением маленького отпуска.</h2>
             <p>
@@ -366,14 +389,14 @@ export default function Home() {
 
       <section className="past-events section" id="past-events">
         <div className="section__inner">
-          <div className="section__header">
+          <div className="section__header" data-reveal>
             <p className="eyebrow">Уже было</p>
             <h2>Прошлые встречи: живые, маленькие и очень тёплые.</h2>
           </div>
 
           <div className="past-events-grid">
             {pastEvents.map((event) => (
-              <article className="past-event-card" key={event.title}>
+              <article className="past-event-card" key={event.title} data-reveal data-cursor-light data-tilt-card>
                 <figure className="past-event-card__image">
                   <Image
                     src={event.image}
@@ -395,7 +418,7 @@ export default function Home() {
 
       <section className="price section" id="price">
         <div className="section__inner price__layout">
-          <div>
+          <div data-reveal>
             <p className="eyebrow">Стоимость</p>
             <h2>€65 за вечер, всё включено.</h2>
             <p>
@@ -404,7 +427,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="price__details" aria-label="Что входит в стоимость">
+          <div className="price__details" aria-label="Что входит в стоимость" data-reveal data-cursor-light>
             <div>~3 часа программы</div>
             <div>Приватный формат, только 10 мест</div>
             <div>Стретчинг, сауна, бассейн, карты и подарки</div>
@@ -413,7 +436,7 @@ export default function Home() {
         </div>
 
         <div className="section__inner">
-          <div className="spots-bar">
+          <div className="spots-bar" data-reveal data-cursor-light>
             <div id="spotsCounter" style={{ display: "none" }}>
               <div className="spots-label">Осталось мест</div>
               <div className="spots-count" id="spotsNumber">
@@ -429,6 +452,7 @@ export default function Home() {
               href={registrationUrl}
               target={isExternalRegistration ? "_blank" : undefined}
               rel={isExternalRegistration ? "noreferrer" : undefined}
+              data-cursor-light
             >
               Забронировать
               <ArrowUpRight size={18} aria-hidden="true" />
@@ -439,7 +463,7 @@ export default function Home() {
 
       <section className="reserve section" id="reserve">
         <div className="section__inner reserve__grid">
-          <div className="reserve__copy">
+          <div className="reserve__copy" data-reveal>
             <p className="eyebrow">Бронирование</p>
             <h2>Всего 10 мест. Пространству нужно оставаться просторным.</h2>
             <p>
@@ -458,7 +482,7 @@ export default function Home() {
             </ul>
           </div>
 
-          <aside className="booking-panel" aria-label="Панель бронирования">
+          <aside className="booking-panel" aria-label="Панель бронирования" data-reveal data-cursor-light data-tilt-card>
             <div className="booking-panel__top">
               <span className="booking-panel__label">27 июня</span>
               <Users size={24} aria-hidden="true" />
@@ -483,6 +507,7 @@ export default function Home() {
               href={registrationUrl}
               target={isExternalRegistration ? "_blank" : undefined}
               rel={isExternalRegistration ? "noreferrer" : undefined}
+              data-cursor-light
             >
               Оставить заявку
               <ArrowUpRight size={18} aria-hidden="true" />
@@ -493,16 +518,19 @@ export default function Home() {
 
       <section className="faq section">
         <div className="section__inner">
-          <div className="section__header">
+          <div className="section__header" data-reveal>
             <p className="eyebrow">Вопросы</p>
             <h2>Всё просто: приходишь, выдыхаешь, остальное уже собрано.</h2>
           </div>
           <div className="faq__grid">
             {faqs.map((item) => (
-              <article className="faq__item" key={item.question}>
-                <h3>{item.question}</h3>
+              <details className="faq__item" key={item.question} data-reveal data-cursor-light>
+                <summary>
+                  <h3>{item.question}</h3>
+                  <Plus size={18} aria-hidden="true" />
+                </summary>
                 <p>{item.answer}</p>
-              </article>
+              </details>
             ))}
           </div>
         </div>
@@ -522,6 +550,7 @@ export default function Home() {
         href={registrationUrl}
         target={isExternalRegistration ? "_blank" : undefined}
         rel={isExternalRegistration ? "noreferrer" : undefined}
+        data-cursor-light
       >
         Забронировать
         <ArrowUpRight size={18} aria-hidden="true" />
