@@ -45,7 +45,7 @@ const pastEventMedia: { image: string; video?: string }[] = [
     video: "https://www.instagram.com/reel/C8CjZ9xt2Nx/?igsh=aHdrcXIyNzI2cmRl",
   },
   {
-    image: "/images/past-barcelona-sarana.jpg",
+    image: "/images/past-barcelona-studio.jpg",
     video: "https://www.instagram.com/reel/C_c7XQcITkD/?igsh=MTF1cGp1bDE3aWU2YQ==",
   },
   {
@@ -325,7 +325,22 @@ export function Landing() {
                     </span>
                   </figure>
                   <h3>{event.title}</h3>
-                  <p>{event.text}</p>
+                  <p>
+                    {event.text.map((part, partIndex) =>
+                      typeof part === "string" ? (
+                        part
+                      ) : (
+                        <a
+                          key={partIndex}
+                          href={part.href}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {part.label}
+                        </a>
+                      )
+                    )}
+                  </p>
                   {media.video && (
                     <a
                       className="past-event-card__video"

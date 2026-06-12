@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLanguage } from "../i18n/LanguageProvider";
 
-const EVENT_TIME = new Date("2026-06-27T17:00:00+02:00").getTime();
+const EVENT_TIME = new Date("2026-07-11T17:00:00+02:00").getTime();
 
 type TimeLeft = {
   days: number;

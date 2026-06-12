@@ -71,7 +71,11 @@ export interface Dictionary {
     eyebrow: string;
     title: string;
     videoLabel: string;
-    items: { title: string; text: string; alt: string }[];
+    items: {
+      title: string;
+      text: (string | { label: string; href: string })[];
+      alt: string;
+    }[];
   };
   contacts: {
     ariaLabel: string;
@@ -136,11 +140,11 @@ const ru: Dictionary = {
     label: "Сменить язык",
   },
   hero: {
-    eyebrow: "Амстердам / 27 июня / мест немного",
+    eyebrow: "Амстердам / 11 июля / мест немного",
     title: "Wellness Evening Amsterdam",
     lead: "Камерный вечер для девушек: стретчинг, сауна с бассейном, карточная игра We are Not Really Strangers, подарки и тёплое общение.",
     detailsAriaLabel: "Детали события",
-    date: "27 июня 2026",
+    date: "11 июля 2026, суббота",
     time: "17:00-20:00",
     location: "Stretch & Fold studio Amsterdam",
     primaryCta: "Забронировать место",
@@ -232,7 +236,7 @@ const ru: Dictionary = {
     ],
   },
   about: {
-    eyebrow: "О Наташе",
+    eyebrow: "Познакомимся",
     slides: [
       {
         text: "Привет, я Наташа 🤍 Wellness-амбассадор · Siberian Wellness. С детства танцую латину — движение для меня буквально жизнь. Урал, Питер, Москва, Роттердам, Амстердам — в каждом городе всегда включала этот self-care ритуал: йога, пилатес, растяжка, танцы. Люблю то ощущение в теле после практики — когда всё на месте и можно просто дышать. Вижу: как только подключаешься к себе через тело, тревожность уходит, дышать легче, телу приятно. В этот вечер хочу подарить тебе именно это ощущение. Верю, что красота идёт изнутри наружу — когда всё хорошо с ЖКТ, нервной системой и иммунитетом, кожа, волосы и энергия скажут спасибо сами.",
@@ -266,17 +270,31 @@ const ru: Dictionary = {
     items: [
       {
         title: "Амстердам 🇳🇱",
-        text: "Протеиновые бленды после йоги на HUMA-пикник в Вонделпарке",
+        text: [
+          "Протеиновые бленды после йоги на ",
+          {
+            label: "HUMA-пикник",
+            href: "https://www.instagram.com/explain.in.huma?igsh=MTNhdG82d2F0MHhnZw==",
+          },
+          " в Вонделпарке",
+        ],
         alt: "Протеиновые бленды после йоги на пикнике в Вонделпарке в Амстердаме",
       },
       {
         title: "Барселона 🇪🇸",
-        text: "Утренняя йога в уютной студии Centro Sarana 💛",
+        text: [
+          "Утренняя йога в уютной студии ",
+          {
+            label: "Centro Sarana",
+            href: "https://www.instagram.com/centrosarana?igsh=MXNvNzNyZTJsNmY5Mg==",
+          },
+          " 💛",
+        ],
         alt: "Группа после утренней йоги в студии Centro Sarana в Барселоне",
       },
       {
         title: "Амстердам 🇳🇱",
-        text: "Стретчинг, спа и уютные разговоры в Stretch&Fold Studio",
+        text: ["Стретчинг, спа и уютные разговоры в Stretch&Fold Studio"],
         alt: "Зал студии Stretch & Fold с ковриками и мягким светом",
       },
     ],
@@ -305,7 +323,7 @@ const ru: Dictionary = {
   reserve: {
     eyebrow: "Бронирование",
     title: "Количество мест ограничено.",
-    copy: "Если 27 июня звучит как вечер, который нужен телу и голове, оставь заявку.",
+    copy: "Если 11 июля звучит как вечер, который нужен телу и голове, оставь заявку.",
     assurances: [
       "Места ограниченны, чтобы вечер оставался личным",
       "Опыт йоги или стретчинга не нужен",
@@ -313,7 +331,7 @@ const ru: Dictionary = {
       "Место фиксируется после оплаты через Tikkie или Revolut",
     ],
     panelAriaLabel: "Панель бронирования",
-    panelDate: "27 июня",
+    panelDate: "11 июля",
     panelMetaActivities: "Стретчинг / сауна / бассейн",
     panelMetaLocation: "Stretch & Fold, Amsterdam",
     panelMetaPrice: "€65 всё включено",
@@ -356,7 +374,7 @@ const ru: Dictionary = {
     ],
   },
   footer: {
-    meta: "Амстердам / 27.06.2026 / 17:00 / мест немного",
+    meta: "Амстердам / 11.07.2026 / 17:00 / мест немного",
   },
   mobileCta: "Забронировать",
   countdown: {
@@ -382,11 +400,11 @@ const en: Dictionary = {
     label: "Change language",
   },
   hero: {
-    eyebrow: "Amsterdam / June 27 / limited spots",
+    eyebrow: "Amsterdam / July 11 / limited spots",
     title: "Wellness Evening Amsterdam",
     lead: "An intimate evening for women: stretching, a sauna with a pool, the card game We are Not Really Strangers, gifts and warm company.",
     detailsAriaLabel: "Event details",
-    date: "June 27, 2026",
+    date: "July 11, 2026, Saturday",
     time: "17:00-20:00",
     location: "Stretch & Fold studio Amsterdam",
     primaryCta: "Reserve your spot",
@@ -477,7 +495,7 @@ const en: Dictionary = {
     ],
   },
   about: {
-    eyebrow: "About Natasha",
+    eyebrow: "Let's get to know each other",
     slides: [
       {
         text: "Hi, I'm Natasha 🤍 Wellness ambassador · Siberian Wellness. I've danced Latin since childhood — movement is literally life for me. The Urals, St. Petersburg, Moscow, Rotterdam, Amsterdam — in every city I kept up this self-care ritual: yoga, pilates, stretching, dancing. I love that feeling in the body after a practice, when everything is in place and you can just breathe. I see how, the moment you connect with yourself through the body, anxiety fades, breathing gets easier, the body feels good. On this evening I want to give you exactly that feeling. I believe beauty comes from the inside out — when your gut, nervous system and immunity are well, your skin, hair and energy say thank you on their own.",
@@ -511,17 +529,31 @@ const en: Dictionary = {
     items: [
       {
         title: "Amsterdam 🇳🇱",
-        text: "Protein blends after yoga at the HUMA picnic in Vondelpark",
+        text: [
+          "Protein blends after yoga at the ",
+          {
+            label: "HUMA picnic",
+            href: "https://www.instagram.com/explain.in.huma?igsh=MTNhdG82d2F0MHhnZw==",
+          },
+          " in Vondelpark",
+        ],
         alt: "Protein blends after yoga at a picnic in Vondelpark, Amsterdam",
       },
       {
         title: "Barcelona 🇪🇸",
-        text: "Morning yoga at the cozy Centro Sarana studio 💛",
+        text: [
+          "Morning yoga at the cozy ",
+          {
+            label: "Centro Sarana",
+            href: "https://www.instagram.com/centrosarana?igsh=MXNvNzNyZTJsNmY5Mg==",
+          },
+          " studio 💛",
+        ],
         alt: "Group after morning yoga at Centro Sarana studio in Barcelona",
       },
       {
         title: "Amsterdam 🇳🇱",
-        text: "Stretching, spa and cozy conversations at Stretch&Fold Studio",
+        text: ["Stretching, spa and cozy conversations at Stretch&Fold Studio"],
         alt: "Stretch & Fold studio room with mats and soft light",
       },
     ],
@@ -550,7 +582,7 @@ const en: Dictionary = {
   reserve: {
     eyebrow: "Booking",
     title: "The number of spots is limited.",
-    copy: "If June 27 sounds like an evening your body and mind need, leave a request.",
+    copy: "If July 11 sounds like an evening your body and mind need, leave a request.",
     assurances: [
       "Spots are limited, so the evening stays personal",
       "No yoga or stretching experience needed",
@@ -558,7 +590,7 @@ const en: Dictionary = {
       "Your spot is confirmed after payment via Tikkie or Revolut",
     ],
     panelAriaLabel: "Booking panel",
-    panelDate: "June 27",
+    panelDate: "July 11",
     panelMetaActivities: "Stretching / sauna / pool",
     panelMetaLocation: "Stretch & Fold, Amsterdam",
     panelMetaPrice: "€65 all included",
@@ -601,7 +633,7 @@ const en: Dictionary = {
     ],
   },
   footer: {
-    meta: "Amsterdam / 27.06.2026 / 17:00 / limited spots",
+    meta: "Amsterdam / 11.07.2026 / 17:00 / limited spots",
   },
   mobileCta: "Reserve",
   countdown: {

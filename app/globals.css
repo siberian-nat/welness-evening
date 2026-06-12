@@ -1112,6 +1112,23 @@ p {
   color: rgba(16, 23, 17, 0.68);
 }
 
+.past-event-card p a {
+  color: var(--lagoon);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 180ms ease;
+}
+
+.past-event-card p a:hover {
+  color: var(--copper);
+}
+
+.past-event-card p a:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+}
+
 .past-event-card__video {
   display: inline-flex;
   align-items: center;

@@ -7,11 +7,11 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Wellness Evening · Amsterdam · 27.06",
+  title: "Wellness Evening · Amsterdam · 11.07",
   description:
     "Stretching, a sauna with a pool, cards and gifts — an intimate evening for women in Amsterdam.",
   openGraph: {
-    title: "Wellness Evening · Amsterdam · 27.06",
+    title: "Wellness Evening · Amsterdam · 11.07",
     description:
       "Stretching, a sauna with a pool, cards and gifts — an intimate evening for women in Amsterdam",
     url: siteUrl,
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wellness Evening · Amsterdam · 27.06",
+    title: "Wellness Evening · Amsterdam · 11.07",
     description:
       "Stretching, a sauna with a pool, cards and gifts — an intimate evening for women in Amsterdam.",
     images: ["/images/wellness-hero.png"],
