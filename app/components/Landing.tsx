@@ -49,6 +49,21 @@ export function Landing() {
     <main>
       <LandingMotion />
 
+      <nav className="nav" aria-label={t.nav.ariaLabel}>
+        <a className="nav__brand" href="#top">
+          Wellness
+        </a>
+        <div className="nav__right">
+          <div className="nav__links">
+            <a href="#experience">{t.nav.links.experience}</a>
+            <a href="#program">{t.nav.links.program}</a>
+            <a href="#price">{t.nav.links.price}</a>
+            <a href="#reserve">{t.nav.links.reserve}</a>
+          </div>
+          <LanguageSwitcher />
+        </div>
+      </nav>
+
       <section className="hero" id="top">
         <Image
           className="hero__image"
@@ -62,21 +77,6 @@ export function Landing() {
         <div className="hero__shade" />
         <div className="hero__texture" aria-hidden="true" />
         <div className="hero__waterline" aria-hidden="true" />
-
-        <nav className="nav" aria-label={t.nav.ariaLabel}>
-          <a className="nav__brand" href="#top">
-            Wellness
-          </a>
-          <div className="nav__right">
-            <div className="nav__links">
-              <a href="#experience">{t.nav.links.experience}</a>
-              <a href="#program">{t.nav.links.program}</a>
-              <a href="#price">{t.nav.links.price}</a>
-              <a href="#reserve">{t.nav.links.reserve}</a>
-            </div>
-            <LanguageSwitcher />
-          </div>
-        </nav>
 
         <div className="hero__content" data-reveal>
           <p className="eyebrow">{t.hero.eyebrow}</p>
