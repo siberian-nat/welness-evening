@@ -4,7 +4,7 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://wellness-evening.vercel.app";
 const registrationUrl =
   process.env.NEXT_PUBLIC_REGISTRATION_URL ||
-  "https://forms.gle/replace-with-your-google-form";
+  "https://forms.gle/Pxf25LH8xCFRkbDU7";
 
 export default function Home() {
   const eventJsonLd = {
