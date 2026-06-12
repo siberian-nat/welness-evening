@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "Wellness Evening Amsterdam",
     images: [
       {
-        url: "/images/wellness-hero.png",
+        url: "/images/wellness-hero.jpg",
         width: 1536,
         height: 1024,
         alt: "Wellness Evening Amsterdam: stretching, sauna and pool",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "Wellness Evening · Amsterdam · 11.07",
     description:
       "Stretching, a sauna with a pool, cards and gifts — an intimate evening for women in Amsterdam.",
-    images: ["/images/wellness-hero.png"],
+    images: ["/images/wellness-hero.jpg"],
   },
   icons: {
     icon: "/favicon.svg",

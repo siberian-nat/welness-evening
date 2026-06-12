@@ -1250,6 +1250,33 @@ p {
   color: rgba(247, 240, 230, 0.76);
 }
 
+.spots-bar__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.question-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: rgba(247, 240, 230, 0.72);
+  font-size: 0.84rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 180ms ease;
+}
+
+.question-link:hover {
+  color: var(--cream);
+}
+
+.question-link:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+}
+
 .reserve {
   position: relative;
   overflow: hidden;
@@ -1388,6 +1415,26 @@ p {
 
 .booking-panel__button {
   width: 100%;
+}
+
+.booking-panel__note {
+  display: block;
+  margin-top: 0.85rem;
+  color: rgba(247, 240, 230, 0.66);
+  font-size: 0.86rem;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 180ms ease;
+}
+
+.booking-panel__note:hover {
+  color: var(--cream);
+}
+
+.booking-panel__note:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
 }
 
 .faq__grid {

@@ -83,7 +83,7 @@ export function Landing() {
       <section className="hero" id="top">
         <Image
           className="hero__image"
-          src="/images/wellness-hero.png"
+          src="/images/wellness-hero.jpg"
           alt={t.hero.imageAlt}
           fill
           priority
@@ -286,7 +286,7 @@ export function Landing() {
         <div className="section__inner gallery__grid">
           <figure className="gallery__large" data-reveal data-cursor-light>
             <Image
-              src="/images/wellness-afterglow.png"
+              src="/images/wellness-afterglow.jpg"
               alt={t.gallery.imageAlt}
               fill
               loading="eager"
@@ -383,16 +383,27 @@ export function Landing() {
               </div>
             </div>
             <p>{t.price.spotsCopy}</p>
-            <a
-              className="button button--primary"
-              href={registrationUrl}
-              target={isExternalRegistration ? "_blank" : undefined}
-              rel={isExternalRegistration ? "noreferrer" : undefined}
-              data-cursor-light
-            >
-              {t.price.cta}
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
+            <div className="spots-bar__cta">
+              <a
+                className="button button--primary"
+                href={registrationUrl}
+                target={isExternalRegistration ? "_blank" : undefined}
+                rel={isExternalRegistration ? "noreferrer" : undefined}
+                data-cursor-light
+              >
+                {t.price.cta}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+              <a
+                className="question-link"
+                href={telegramUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Send size={14} aria-hidden="true" />
+                {t.contacts.questionCta}
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -443,6 +454,14 @@ export function Landing() {
             >
               {t.reserve.cta}
               <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+            <a
+              className="booking-panel__note"
+              href={telegramUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t.reserve.cantMakeIt}
             </a>
           </aside>
         </div>

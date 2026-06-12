@@ -82,6 +82,7 @@ export interface Dictionary {
     telegram: string;
     whatsapp: string;
     instagram: string;
+    questionCta: string;
   };
   price: {
     eyebrow: string;
@@ -103,6 +104,7 @@ export interface Dictionary {
     panelMetaLocation: string;
     panelMetaPrice: string;
     cta: string;
+    cantMakeIt: string;
   };
   faq: {
     eyebrow: string;
@@ -304,6 +306,7 @@ const ru: Dictionary = {
     telegram: "Написать в Telegram",
     whatsapp: "Написать в WhatsApp",
     instagram: "Instagram",
+    questionCta: "Остались вопросы? Напиши в Telegram",
   },
   price: {
     eyebrow: "Стоимость",
@@ -336,6 +339,7 @@ const ru: Dictionary = {
     panelMetaLocation: "Stretch & Fold, Amsterdam",
     panelMetaPrice: "€65 всё включено",
     cta: "Оставить заявку",
+    cantMakeIt: "Не можешь 11 июля? Напиши — позову на следующую встречу",
   },
   faq: {
     eyebrow: "Вопросы",
@@ -355,6 +359,17 @@ const ru: Dictionary = {
         question: "Как происходит оплата?",
         answer:
           "После заявки Наташа напишет лично. Оплата через Tikkie или Revolut, место закрепляется после перевода.",
+      },
+      {
+        question: "Что если я не смогу прийти?",
+        answer:
+          "Место можно передать подруге — просто предупреди заранее. Ну или напиши Наташе — решим.",
+        links: [
+          {
+            label: "Написать в Telegram",
+            href: "https://t.me/natmovement",
+          },
+        ],
       },
       {
         question: "Где находится Stretch & Fold?",
@@ -563,6 +578,7 @@ const en: Dictionary = {
     telegram: "Message on Telegram",
     whatsapp: "Message on WhatsApp",
     instagram: "Instagram",
+    questionCta: "Questions? Message me on Telegram",
   },
   price: {
     eyebrow: "Price",
@@ -595,6 +611,7 @@ const en: Dictionary = {
     panelMetaLocation: "Stretch & Fold, Amsterdam",
     panelMetaPrice: "€65 all included",
     cta: "Send a request",
+    cantMakeIt: "Can't make July 11? Message me — I'll invite you to the next one",
   },
   faq: {
     eyebrow: "Questions",
@@ -614,6 +631,17 @@ const en: Dictionary = {
         question: "How does payment work?",
         answer:
           "After your request Natasha will message you personally. Payment via Tikkie or Revolut, and your spot is held once the transfer is made.",
+      },
+      {
+        question: "What if I can't come?",
+        answer:
+          "You can pass your spot to a friend — just let us know in advance. Or message Natasha and we'll figure it out.",
+        links: [
+          {
+            label: "Message on Telegram",
+            href: "https://t.me/natmovement",
+          },
+        ],
       },
       {
         question: "Where is Stretch & Fold?",

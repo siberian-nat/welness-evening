@@ -18,7 +18,7 @@ export default function Home() {
     maximumAttendeeCapacity: 10,
     location: {
       "@type": "Place",
-      name: "Private wellness location",
+      name: "Stretch & Fold studio",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Amsterdam",
@@ -26,9 +26,9 @@ export default function Home() {
       },
     },
     image: [
-      `${siteUrl}/images/wellness-hero.png`,
-      `${siteUrl}/images/wellness-still-life.png`,
-      `${siteUrl}/images/wellness-afterglow.png`,
+      `${siteUrl}/images/wellness-hero.jpg`,
+      `${siteUrl}/images/wellness-still-life.jpg`,
+      `${siteUrl}/images/wellness-afterglow.jpg`,
     ],
     description:
       "An intimate wellness evening for women in Amsterdam: stretching, a sauna with a pool, cards, gifts and gentle company.",
