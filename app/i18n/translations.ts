@@ -70,7 +70,14 @@ export interface Dictionary {
   pastEvents: {
     eyebrow: string;
     title: string;
+    videoLabel: string;
     items: { title: string; text: string; alt: string }[];
+  };
+  contacts: {
+    ariaLabel: string;
+    telegram: string;
+    whatsapp: string;
+    instagram: string;
   };
   price: {
     eyebrow: string;
@@ -255,23 +262,30 @@ const ru: Dictionary = {
   pastEvents: {
     eyebrow: "Уже было",
     title: "Прошлые встречи: живые, маленькие и очень тёплые.",
+    videoLabel: "Смотреть видео",
     items: [
       {
-        title: "Амстердам",
-        text: "Встреча в парке",
-        alt: "Плейсхолдер фото прошлой встречи в парке в Амстердаме",
+        title: "Амстердам 🇳🇱",
+        text: "Протеиновые бленды после йоги на HUMA-пикник в Вонделпарке",
+        alt: "Протеиновые бленды после йоги на пикнике в Вонделпарке в Амстердаме",
       },
       {
-        title: "Барселона",
-        text: "Встреча в студии",
-        alt: "Плейсхолдер фото прошлой встречи в студии в Барселоне",
+        title: "Барселона 🇪🇸",
+        text: "Утренняя йога в уютной студии Centro Sarana 💛",
+        alt: "Группа после утренней йоги в студии Centro Sarana в Барселоне",
       },
       {
-        title: "Скоро",
-        text: "Фото или логотип",
-        alt: "Плейсхолдер для третьего фото или логотипа",
+        title: "Амстердам 🇳🇱",
+        text: "Стретчинг, спа и уютные разговоры в Stretch&Fold Studio",
+        alt: "Зал студии Stretch & Fold с ковриками и мягким светом",
       },
     ],
+  },
+  contacts: {
+    ariaLabel: "Контакты Наташи",
+    telegram: "Написать в Telegram",
+    whatsapp: "Написать в WhatsApp",
+    instagram: "Instagram",
   },
   price: {
     eyebrow: "Стоимость",
@@ -493,23 +507,30 @@ const en: Dictionary = {
   pastEvents: {
     eyebrow: "Already happened",
     title: "Past gatherings: alive, small and very warm.",
+    videoLabel: "Watch video",
     items: [
       {
-        title: "Amsterdam",
-        text: "Gathering in the park",
-        alt: "Placeholder photo of a past gathering in a park in Amsterdam",
+        title: "Amsterdam 🇳🇱",
+        text: "Protein blends after yoga at the HUMA picnic in Vondelpark",
+        alt: "Protein blends after yoga at a picnic in Vondelpark, Amsterdam",
       },
       {
-        title: "Barcelona",
-        text: "Gathering in the studio",
-        alt: "Placeholder photo of a past gathering in a studio in Barcelona",
+        title: "Barcelona 🇪🇸",
+        text: "Morning yoga at the cozy Centro Sarana studio 💛",
+        alt: "Group after morning yoga at Centro Sarana studio in Barcelona",
       },
       {
-        title: "Soon",
-        text: "Photo or logo",
-        alt: "Placeholder for a third photo or logo",
+        title: "Amsterdam 🇳🇱",
+        text: "Stretching, spa and cozy conversations at Stretch&Fold Studio",
+        alt: "Stretch & Fold studio room with mats and soft light",
       },
     ],
+  },
+  contacts: {
+    ariaLabel: "Natasha's contacts",
+    telegram: "Message on Telegram",
+    whatsapp: "Message on WhatsApp",
+    instagram: "Instagram",
   },
   price: {
     eyebrow: "Price",

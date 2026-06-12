@@ -14,7 +14,10 @@ import {
   Gift,
   Leaf,
   MapPin,
+  MessageCircle,
+  Play,
   Plus,
+  Send,
   Sparkles,
   Users,
   Waves,
@@ -27,14 +30,27 @@ import { useLanguage } from "../i18n/LanguageProvider";
 
 const registrationUrl =
   process.env.NEXT_PUBLIC_REGISTRATION_URL ||
-  "https://forms.gle/replace-with-your-google-form";
+  "https://forms.gle/Pxf25LH8xCFRkbDU7";
 const isExternalRegistration = registrationUrl.startsWith("http");
 
+const telegramUrl = "https://t.me/natmovement";
+const whatsappUrl = "https://wa.me/79118271714";
+const instagramUrl =
+  "https://www.instagram.com/nataliachiriateva?igsh=MXRybjQwc2twbnN0cg==";
+
 const highlightIcons = [Leaf, Waves, Droplets, Sparkles, Gift, Flame];
-const pastEventImages = [
-  "/images/wellness-clouds.jpg",
-  "/images/wellness-afterglow.png",
-  "/images/wellness-still-life.png",
+const pastEventMedia: { image: string; video?: string }[] = [
+  {
+    image: "/images/past-amsterdam-picnic.jpg",
+    video: "https://www.instagram.com/reel/C8CjZ9xt2Nx/?igsh=aHdrcXIyNzI2cmRl",
+  },
+  {
+    image: "/images/past-barcelona-sarana.jpg",
+    video: "https://www.instagram.com/reel/C_c7XQcITkD/?igsh=MTF1cGp1bDE3aWU2YQ==",
+  },
+  {
+    image: "/images/past-amsterdam-studio.jpg",
+  },
 ];
 const atmosphereImages = [
   "/images/wellness-atmosphere-1.jpg",
@@ -162,6 +178,38 @@ export function Landing() {
             prevLabel={t.about.controls.prev}
             nextLabel={t.about.controls.next}
           />
+          <div className="contact-links" aria-label={t.contacts.ariaLabel}>
+            <a
+              className="contact-link"
+              href={telegramUrl}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor-light
+            >
+              <Send size={16} aria-hidden="true" />
+              {t.contacts.telegram}
+            </a>
+            <a
+              className="contact-link"
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor-light
+            >
+              <MessageCircle size={16} aria-hidden="true" />
+              {t.contacts.whatsapp}
+            </a>
+            <a
+              className="contact-link"
+              href={instagramUrl}
+              target="_blank"
+              rel="noreferrer"
+              data-cursor-light
+            >
+              <Camera size={16} aria-hidden="true" />
+              {t.contacts.instagram}
+            </a>
+          </div>
         </div>
       </section>
 
@@ -261,23 +309,37 @@ export function Landing() {
           </div>
 
           <div className="past-events-grid">
-            {t.pastEvents.items.map((event, index) => (
-              <article className="past-event-card" key={index} data-reveal data-cursor-light data-tilt-card>
-                <figure className="past-event-card__image">
-                  <Image
-                    src={pastEventImages[index] ?? pastEventImages[0]}
-                    alt={event.alt}
-                    fill
-                    sizes="(max-width: 680px) 100vw, 33vw"
-                  />
-                  <span aria-hidden="true">
-                    <Camera size={18} />
-                  </span>
-                </figure>
-                <h3>{event.title}</h3>
-                <p>{event.text}</p>
-              </article>
-            ))}
+            {t.pastEvents.items.map((event, index) => {
+              const media = pastEventMedia[index] ?? pastEventMedia[0];
+              return (
+                <article className="past-event-card" key={index} data-reveal data-cursor-light data-tilt-card>
+                  <figure className="past-event-card__image">
+                    <Image
+                      src={media.image}
+                      alt={event.alt}
+                      fill
+                      sizes="(max-width: 680px) 100vw, 33vw"
+                    />
+                    <span aria-hidden="true">
+                      <Camera size={18} />
+                    </span>
+                  </figure>
+                  <h3>{event.title}</h3>
+                  <p>{event.text}</p>
+                  {media.video && (
+                    <a
+                      className="past-event-card__video"
+                      href={media.video}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Play size={15} aria-hidden="true" />
+                      {t.pastEvents.videoLabel}
+                    </a>
+                  )}
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -412,6 +474,20 @@ export function Landing() {
           <a className="nav__brand" href="#top">
             Wellness
           </a>
+          <div className="footer__contacts" aria-label={t.contacts.ariaLabel}>
+            <a href={telegramUrl} target="_blank" rel="noreferrer">
+              <Send size={16} aria-hidden="true" />
+              {t.contacts.telegram}
+            </a>
+            <a href={whatsappUrl} target="_blank" rel="noreferrer">
+              <MessageCircle size={16} aria-hidden="true" />
+              {t.contacts.whatsapp}
+            </a>
+            <a href={instagramUrl} target="_blank" rel="noreferrer">
+              <Camera size={16} aria-hidden="true" />
+              {t.contacts.instagram}
+            </a>
+          </div>
           <p>{t.footer.meta}</p>
         </div>
       </footer>

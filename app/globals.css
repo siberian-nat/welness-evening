@@ -1112,6 +1112,35 @@ p {
   color: rgba(16, 23, 17, 0.68);
 }
 
+.past-event-card__video {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.85rem;
+  padding: 0.42rem 0.72rem;
+  border: 1px solid var(--line-dark);
+  border-radius: 999px;
+  background: rgba(255, 250, 243, 0.72);
+  color: var(--lagoon);
+  font-size: 0.84rem;
+  font-weight: 800;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms var(--ease-luxury);
+}
+
+.past-event-card__video:hover {
+  background: var(--milk);
+  border-color: rgba(31, 108, 104, 0.4);
+  transform: translateY(-1px);
+}
+
+.past-event-card__video:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+}
+
 .price {
   background:
     linear-gradient(180deg, var(--cream), #f7efe6);
@@ -1461,6 +1490,73 @@ p {
 
 .footer p {
   margin: 0;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 1.6rem;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.48rem 0.85rem;
+  border: 1px solid var(--line-dark);
+  border-radius: 999px;
+  background: rgba(255, 250, 243, 0.72);
+  color: var(--lagoon);
+  font-size: 0.88rem;
+  font-weight: 800;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms var(--ease-luxury);
+}
+
+.contact-link:hover {
+  background: var(--milk);
+  border-color: rgba(31, 108, 104, 0.4);
+  transform: translateY(-1px);
+}
+
+.contact-link:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+}
+
+.footer__contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.footer__contacts a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.78rem;
+  border: 1px solid rgba(247, 240, 230, 0.28);
+  border-radius: 999px;
+  color: rgba(247, 240, 230, 0.92);
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.footer__contacts a:hover {
+  background: rgba(247, 240, 230, 0.12);
+  border-color: rgba(247, 240, 230, 0.5);
+}
+
+.footer__contacts a:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
 }
 
 .mobile-booking-cta {
