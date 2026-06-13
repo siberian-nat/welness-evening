@@ -296,7 +296,13 @@ const ru: Dictionary = {
       },
       {
         title: "Амстердам 🇳🇱",
-        text: ["Стретчинг, спа и уютные разговоры в Stretch&Fold Studio"],
+        text: [
+          "Стретчинг, спа и уютные разговоры в ",
+          {
+            label: "Stretch&Fold Studio",
+            href: "https://www.instagram.com/stretchandfoldstudio?igsh=MWJuaWQ4cnMxdmhteQ==",
+          },
+        ],
         alt: "Зал студии Stretch & Fold с ковриками и мягким светом",
       },
     ],
@@ -363,7 +369,7 @@ const ru: Dictionary = {
       {
         question: "Что если я не смогу прийти?",
         answer:
-          "Место можно передать подруге — просто предупреди заранее. Ну или напиши Наташе — решим.",
+          "Место можно передать подруге — просто напиши Наташе и предупреди заранее, решим.",
         links: [
           {
             label: "Написать в Telegram",
@@ -568,7 +574,13 @@ const en: Dictionary = {
       },
       {
         title: "Amsterdam 🇳🇱",
-        text: ["Stretching, spa and cozy conversations at Stretch&Fold Studio"],
+        text: [
+          "Stretching, spa and cozy conversations at ",
+          {
+            label: "Stretch&Fold Studio",
+            href: "https://www.instagram.com/stretchandfoldstudio?igsh=MWJuaWQ4cnMxdmhteQ==",
+          },
+        ],
         alt: "Stretch & Fold studio room with mats and soft light",
       },
     ],
@@ -635,7 +647,7 @@ const en: Dictionary = {
       {
         question: "What if I can't come?",
         answer:
-          "You can pass your spot to a friend — just let us know in advance. Or message Natasha and we'll figure it out.",
+          "You can pass your spot to a friend — just message Natasha to let us know in advance and we'll figure it out.",
         links: [
           {
             label: "Message on Telegram",
